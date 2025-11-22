@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "thread_id": "t1",
+    "from": "manager@company.com",
+    "subject": "Weekly status update",
+    "body": "Hi team, please send me your weekly status updates by EOD today.",
+    "received_at": "2025-11-20T10:15:00"
+  },
+  {
+    "id": "2",
+    "thread_id": "t1",
+    "from": "you@company.com",
+    "subject": "Re: Weekly status update",
+    "body": "Sure, I'll share my status by evening.",
+    "received_at": "2025-11-20T10:30:00"
+  },
+  {
+    "id": "3",
+    "thread_id": "t2",
+    "from": "hr@company.com",
+    "subject": "Policy update: Work from home",
+    "body": "We have updated the WFH policy. Please see attached.",
+    "received_at": "2025-11-19T09:00:00"
+  }
+]
