@@ -1,53 +1,15 @@
-Rank,State,Postal,Population
-1,Alabama,AL,4849377
-2,Alaska,AK,736732
-3,Arizona,AZ,6731484
-4,Arkansas,AR,2966369
-5,California,CA,38802500
-6,Colorado,CO,5355866
-7,Connecticut,CT,3596677
-8,Delaware,DE,935614
-9,District of Columbia,DC,658893
-10,Florida,FL,19893297
-11,Georgia,GA,10097343
-12,Hawaii,HI,1419561
-13,Idaho,ID,1634464
-14,Illinois,IL,12880580
-15,Indiana,IN,6596855
-16,Iowa,IA,3107126
-17,Kansas,KS,2904021
-18,Kentucky,KY,4413457
-19,Louisiana,LA,4649676
-20,Maine,ME,1330089
-21,Maryland,MD,5976407
-22,Massachusetts,MA,6745408
-23,Michigan,MI,9909877
-24,Minnesota,MN,5457173
-25,Mississippi,MS,2994079
-26,Missouri,MO,6063589
-27,Montana,MT,1023579
-28,Nebraska,NE,1881503
-29,Nevada,NV,2839098
-30,New Hampshire,NH,1326813
-31,New Jersey,NJ,8938175
-32,New Mexico,NM,2085572
-33,New York,NY,19746227
-34,North Carolina,NC,9943964
-35,North Dakota,ND,739482
-36,Ohio,OH,11594163
-37,Oklahoma,OK,3878051
-38,Oregon,OR,3970239
-39,Pennsylvania,PA,12787209
-40,Puerto Rico,PR,3548397
-41,Rhode Island,RI,1055173
-42,South Carolina,SC,4832482
-43,South Dakota,SD,853175
-44,Tennessee,TN,6549352
-45,Texas,TX,26956958
-46,Utah,UT,2942902
-47,Vermont,VT,626562
-48,Virginia,VA,8326289
-49,Washington,WA,7061530
-50,West Virginia,WV,1850326
-51,Wisconsin,WI,5757564
-52,Wyoming,WY,584153
+date,month,region,revenue,units
+1/3/2025,1/1/2025,North,14000,75
+1/4/2025,1/1/2025,South,9000,45
+1/6/2025,1/1/2025,West,10500,52
+1/9/2025,1/1/2025,East,8000,40
+,,,,
+2/2/2025,2/1/2025,North,15000,80
+2/5/2025,2/1/2025,South,11000,55
+2/8/2025,2/1/2025,West,13500,60
+2/12/2025,2/1/2025,East,9500,47
+,,,,
+3/1/2025,3/1/2025,North,16000,84
+3/4/2025,3/1/2025,South,12000,58
+3/6/2025,3/1/2025,West,14500,66
+3/10/2025,3/1/2025,East,10000,50
