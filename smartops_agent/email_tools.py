@@ -86,3 +86,30 @@ def draft_reply(
         "last_snippet": last_email.get("body", "")[:500],
         "user_note": user_note,
     }
+def search_email_by_body_keyword(keyword: str) -> List[Dict[str, Any]]:
+    """
+    Search emails whose body contains the keyword.
+    Returns a list of matching emails (up to 5).
+    """
+    emails = _load_emails()
+    keyword_lower = keyword.lower()
+
+    matches = []
+    for e in emails:
+        body = e.get("body", "").lower()
+        subject = e.get("subject", "").lower()
+
+        if keyword_lower in body or keyword_lower in subject:
+            matches.append({
+                "id": e.get("id"),
+                "thread_id": e.get("thread_id"),
+                "from": e.get("from"),
+                "subject": e.get("subject"),
+                "snippet": e.get("body", "")[:400],
+                "received_at": e.get("received_at")
+            })
+
+        if len(matches) >= 5:
+            break
+
+    return matches

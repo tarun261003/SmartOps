@@ -3,7 +3,10 @@ from typing import Literal, Dict, Any
 
 from google.adk.agents.llm_agent import Agent
 
-from .email_tools import summarize_inbox, draft_reply
+from .email_tools import (
+    summarize_inbox, draft_reply, search_email_by_body_keyword
+)
+
 from .analytics_tools import analyze_sales_csv
 from .policy_rag_tools import answer_policy_question
 
@@ -27,7 +30,7 @@ def route_request(
           "user_note": "optional"
         }
       - for analytics: {
-          "file_path": "data/sample_sales.csv"
+          "file_path": "smartops_agent\data\sample_sales.csv"
         }
       - for policy: {
           "question": "What is the leave policy for sick leave?"
@@ -55,7 +58,7 @@ def route_request(
             return {"error": f"Unknown email action: {action}"}
 
     if task_type == "analytics":
-        file_path = payload.get("file_path", "data/sample_sales.csv")
+        file_path = payload.get("file_path", "smartops_agent\data\sample_sales.csv")
         report = analyze_sales_csv(file_path)
         return {
             "channel": "analytics",
@@ -74,6 +77,12 @@ def route_request(
 
     return {"error": f"Unknown task_type: {task_type}"}
 
+    if task_type == "email_search":
+        keyword = payload.get("keyword", "")
+        return {
+            "channel": "email_search",
+            "result": search_email_by_body_keyword(keyword)
+        }
 
 root_agent = Agent(
     model="gemini-2.5-flash",
@@ -97,7 +106,16 @@ root_agent = Agent(
         "   - For analytics, use task_type='analytics' and pass the file_path if given.\n"
         "   - For policy Q&A, use task_type='policy' and pass the question.\n"
         "4) Take the tool output and convert it into a clear, business-friendly response.\n"
-        "5) If the user is vague, ask a short clarification question before calling a tool."
+        "5) If the user is vague, ask a short clarification question before calling a tool.\n\n"
+        "Special rule for email search based on body keywords:\n"
+        "If the user asks about an email 'about' some topic (for example: the email about the meeting, "
+        "the message regarding the deadline, or 'help me reply to the email about X'):\n"
+        "  - Infer the key topic word or short phrase X from the user's request.\n"
+        "  - Call the 'route_request' tool with task_type='email_search' and payload {'keyword': X}.\n"
+        "  - If the tool returns one or more matches, choose the best matching email and either summarize it "
+        "    or draft a reply, depending on what the user requested.\n"
+        "  - If the tool returns no matches, ask the user for an additional keyword, sender, or approximate date "
+        "    before trying again.\n"
     ),
     tools=[route_request],
 )
